@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Ben Keunen, Matthew Wong" />
+  <meta name="dcterms.date" content="2021-03-22" />
+  <title>CP476 Project: Bar Down Coaching</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="proposal.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">CP476 Project: Bar Down Coaching</h1>
+<p class="author">Ben Keunen, Matthew Wong<br></p>
+<p class="date">2021-03-22</p>
+</header>
+<h2 id="introduction">Introduction</h2>
+<p>We are creating a sports / team management system that is used to keep track of roster, points, optimal team setups (lines), practice drills and other information related to running a team. It will allow a coach to create and store exercises along with player specific information to ensure the team can be run efficiently and improve itself. To begin it will focus solely on Hockey which is the most popular sport in Canada and fifth most popular in the United States.</p>
+<h2 id="problem-solving-and-algorithms">Problem solving and algorithms</h2>
+<ol class="incremental" type="1">
+<li>Will allow the coach / manager to store and edit exercises they created including any whiteboard (Javascript Canvas) drawings they may have created to go with the exercises. This will require a database that can store the exercises along with the images and keywords so they can sort through and find the exercises for the skills they are trying to work on.</li>
+<li>Additionally through the player management system they must be able to load individual player information as well as see who has been most productive to the team with different criteria.</li>
+<li>The coach finally will be given a team planning form that will allow him to specify the current needs, whether it be they are down in the game and need to know who to put on the field to ensure they score the needed goal, or if they are currently in the lead and need to maintain that by making sure they have a well balanced team out in the playing area. (Ie going for a quick boost of strength or going for long term success) This will be calculated algorithmically on the server and have the ideal group for the situation displayed to the coach.</li>
+</ol>
+<h2 id="system-design">System Design</h2>
+<p><strong>1. System:</strong> It will be a multi tier web application using multiple tools, as listed in part 2, which allow for quick access to a database where the server retrieves player and drill info and returns it in a readable format to the user in the web browser. The team planning will involve loading player information and user input parameters into a php file which calculates the lineup of players that best meet the requirements and returns it in a readable table to the user. The website will be deployed in docker to ensure the server has all libraries available and compatible with the site requirements.</p>
+<p><strong>2. Tools:</strong> Xampp, Apache, mySQL, JQuery, AJAX, Doctrine for PHP, Composer, and Docker.</p>
+<p><strong>3. Views:</strong></p>
+<figure>
+<img src="documentationImages/views.png" alt="View Images" /><figcaption>View Images</figcaption>
+</figure>
+<p><strong>4. Architecture:</strong></p>
+<figure>
+<img src="documentationImages/Architectures.png" alt="View Images" /><figcaption>View Images</figcaption>
+</figure>
+<h2 id="milestones-schedule">Milestones &amp; schedule</h2>
+<p>List of tasks/milestones/check points of your project with time schedule. For group project, it needs to provide the roles and tasks of each member.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Task ID</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: center;">Due date</th>
+<th style="text-align: center;">Lead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Project research &amp; team up</td>
+<td style="text-align: center;">Day 5 of week 9</td>
+<td style="text-align: center;">Ben</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Project proposal</td>
+<td style="text-align: center;">Day 1 of week 10</td>
+<td style="text-align: center;">Ben</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">Project check point</td>
+<td style="text-align: center;">date</td>
+<td style="text-align: center;">Ben</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Project check point</td>
+<td style="text-align: center;">date</td>
+<td style="text-align: center;">Matt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">Project demonstration</td>
+<td style="text-align: center;">Day 5 of week 12</td>
+<td style="text-align: center;">Matt</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">Project submission</td>
+<td style="text-align: center;">Day 5 of week 13</td>
+<td style="text-align: center;">Matt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ol class="incremental" type="1">
+<li><a href="https://www.doctrine-project.org/">Doctrine</a></li>
+<li><a href="https://getcomposer.org/">Composer</a></li>
+<li><a href="https://www.docker.com/">Docker</a></li>
+<li><a href="https://sportytell.com/sports/top-10-most-popular-sports-in-canada/">Top Ten Sports Canada</a></li>
+<li><a href="https://www.hockeyshare.com/blog/comments-thoughts/hockey-rink-diagrams-practice-plan-templates/">Importance of Hockey Rink Diagrams</a></li>
+</ol>
+<h2 id="appendices">Appendices</h2>
+<ol class="incremental" type="1">
+<li><p>Check the project <a href="readme.txt" class="uri">readme.txt</a> for detailed requirements and evaluation. You need to describe and claim new features in your project, so it is good (not required) to mention some new features in the proposal. For example, you can introduce more security features such as password encryption and HTTPS for your application. You can test to deploy your application on Docker.</p></li>
+<li><p>You may use HTML elements and CSS for better presentation of your proposal. For example, this HTML document is generated by using <a href="proposal_template.md" class="uri">proposal_template.md</a> and <a href="proposal.css" class="uri">proposal.css</a> and the following pandoc command</p></li>
+</ol>
+<pre><code>pandoc  -s  -i proposal_template.md -o proposal_template.html --css=proposal.css</code></pre>
+<ol class="incremental" start="3" type="1">
+<li>You can submit your proposal in PDF file format.</li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Management Portal</title>
+    <link rel="stylesheet" href="myStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function myLoad(siteName){
+            $('#mainContainer').load("pages/"+siteName+".html", function(data){
+            $.getScript("pages/"+siteName+".js");
+            // remove the span tag -- no need to render it
+
+    });
+}
+</script>
+
+</head>
+<body>
+    <script> 
+      $(document).ready(function(){
+        myLoad('Home');
+        $(".topnav a").click(function(e) {
+            $('.topnav a.active').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+    });
+        
+        </script>
+    <div class="topnav">
+        <a class="active" href="#home" onclick="javascript:myLoad('Home')">Home</a>
+        <a href="#Players" onclick="javascript:myLoad('playerManagement')">Players</a>
+        <a href="#Drills" onclick="javascript:myLoad('drillManagement')">Drills</a>
+        <a href="#Planning" onclick="javascript:myLoad('teamPlanning')">Plan Team</a>
+      </div> 
+
+
+    <h1>Thanks for Choosing Bar-Down Coaching</h1>
+    <div id=mainContainer></p>
+    
+    
+</body>
+</html>
