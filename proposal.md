@@ -22,11 +22,11 @@ We are creating a sports / team management system that is used to keep track of 
 
 **3. Views:**
 
-![View Images](documentationImages/views.png)
+![](documentationImages/views.png)
 
 **4. Architecture:**
    
-![View Images](documentationImages/Architectures.png)
+![](documentationImages/Architectures.png)
 
 
 
