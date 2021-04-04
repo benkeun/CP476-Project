@@ -11,19 +11,20 @@
 
 <body>
     <p>Full Ice Exercises</p>
-    <button type="radio" name="background" onclick="changeBackground(backgroundFull)">Full Ice</button>
-    <button type="radio" name="background" onclick="changeBackground(backgroundHalf)">Half Ice</button>
+    <input type="radio" name="background" value="ice" onclick="changeBackground('images/ice.jpg')" checked>Full Ice</input>
+    <input type="radio" name="background" value= "halfIce" onclick="changeBackground('images/halfIce.jpg')">Half Ice</input>
     <div id="drillDiv">
         <canvas id="drillCanvas" height="550" width="1200"></canvas>
     </div>
-    <button type="radio" name="mode" onclick="changeMode(circleMode)">Circle</button>
-    <button type="radio" name="mode" onclick="changeMode(crossMode)">Cross</button>
-    <button type="radio" name="mode" onclick="changeMode(linesMode)">Lines</button>
-    <button type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</button>
+    <input type="radio" name="mode" onclick="changeMode(circleMode)">Circle</input>
+    <input type="radio" name="mode" onclick="changeMode(crossMode)">Cross</input>
+    <input type="radio" name="mode" onclick="changeMode(linesMode)" checked>Lines</input>
+    <input type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</input>
     
     <p>Plan Drills</p>
 
 
 </body>
+
 
 </html>

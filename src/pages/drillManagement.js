@@ -8,9 +8,7 @@ var paint = false;
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
-backgroundFull.src = "images/ice.jpg";
-backgroundHalf.src = "images/halfIce.jpg";
-var mode;
+var mode="lines";
 circleMode = "circle";
 crossMode = "cross";
 linesMode = "lines";
@@ -35,19 +33,16 @@ function changeMode(mode){
     }
 }
 
-backgroundFull.onload = function () {
-    ctx.drawImage(backgroundFull, 0, 0);
-};
 function addClick(x, y, dragging) {
     clickX.push(x);
     clickY.push(y);
     clickDrag.push(dragging);
 }
 function changeBackground(image) {
-    ctx.clearRect(0, 0, 1200, 550);
-    ctx.drawImage(image, 0, 0);
+        canvas.style.backgroundImage= "url("+image+")";
 }
 function redraw() {
+    console.log("draw");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
 
     ctx.strokeStyle = "#df4b26";
@@ -66,25 +61,25 @@ function redraw() {
         ctx.stroke();
     }
 }
-
-$('#canvas').mousedown(function (e) {
+console.log(canvas);
+canvas.onmousedown=function (e) {
     var mouseX = e.pageX - this.offsetLeft;
     var mouseY = e.pageY - this.offsetTop;
-
+    console.log("here")
     paint = true;
     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
     redraw();
-});
-$('#canvas').mousemove(function (e) {
+};
+canvas.onmousemove=function (e) {
     if (paint) {
         addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
         redraw();
     }
-});
-$('#canvas').mouseup(function (e) {
+};
+canvas.onmouseup=function (e) {
     paint = false;
     redraw();
-});
-$('#canvas').mouseleave(function (e) {
+};
+canvas.onmouseleave=function (e) {
     paint = false;
-});
+};
