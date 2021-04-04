@@ -15,7 +15,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 <body>
     <h1>Players</h1>
-    <button onclick="addModal()">New Player</button>
+    <button id = addPlayer onclick="addModal()">New Player</button>
     <br>
     <?php
 
@@ -25,7 +25,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         echo "<table id=players><thead><tr><th>First Name</th><th>Last Name</th><th>Number</th><th>Position</th><th>Points</th><th> + / - </th><th>Actions</th></tr></thead><tbody>";
         while ($row = $result->fetch_assoc()) {
 
-            echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['number'] . "</td><td>" . $row['position'] . "</td><td>" . $row['points'] . "</td><td>" . $row['plus_minus'] . "</td><td><button onClick='deletePlayer(" . $row['number'] . ")'>Delete</button><button onClick='editModal(" . $row['number'] . ")'>Edit</button></td></tr>";
+            echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['number'] . "</td><td>" . $row['position'] . "</td><td>" . $row['points'] . "</td><td>" . $row['plus_minus'] . "</td><td><button onClick='deletePlayer(" . $row['number'] . ")'>Delete</button><button class = leftMarginBtn onClick='editModal(" . $row['number'] . ")'>Edit</button></td></tr>";
         }
         echo "</tbody></table>";
     } else {

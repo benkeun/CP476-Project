@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php 
+ini_set('display_errors', '0');
 include 'autoload.php' ;
 $servername=env('servername') ;
 $username=env("username") ;

@@ -15,16 +15,19 @@ CREATE TABLE drills (
 name varchar(32) NOT NULL,
 category varchar(32) NOT NULL,
 canvas longtext NOT NULL,
+description longtext NOT NULL,
 PRIMARY KEY (`name`) );
 
-CREATE TABLE player_lines (
+CREATE TABLE lineups (
 id int(11) NOT NULL AUTO_INCREMENT,
-type varchar(32) NOT NULL,
+lineup_type varchar(32) NOT NULL, /*Power, Balanced, Defense, Custom*/
 line_num int(11) NOT NULL,
 player_num int(3) NOT NULL,
+description longtext,
 PRIMARY KEY (`id`) ,
 FOREIGN KEY (`player_num`) REFERENCES players(`number`)
 );
+
 
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('John', 'Smith', 'Right Wing', 10, 7, 5);
@@ -62,3 +65,36 @@ INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Crystal', 'Yeo', 'Goalie', 2, 0, 0);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Britney', 'Spheres', 'Goalie', 3, 0, 0);
+
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 1, 22);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 1, 69);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 1, 37);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 1, 47);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 1, 82);
+
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 2, 13);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 2, 72);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 2, 90);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 2, 24);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom", 2, 34);
+
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom2", 1, 17);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom2", 1, 86);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom2", 1, 55);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom2", 1, 49);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Custom2", 1, 10);
