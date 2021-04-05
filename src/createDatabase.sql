@@ -20,7 +20,7 @@ PRIMARY KEY (`name`) );
 
 CREATE TABLE lineups (
 id int(11) NOT NULL AUTO_INCREMENT,
-lineup_type varchar(32) NOT NULL, /*Power, Balanced, Defense, Custom*/
+lineup_type varchar(32) NOT NULL, /*Power, Balanced, Defensive, Custom*/
 line_num int(11) NOT NULL,
 player_num int(3) NOT NULL,
 description longtext,
@@ -34,7 +34,7 @@ VALUES ('John', 'Smith', 'Right Wing', 10, 7, 5);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Alex', 'Martin', 'Left Wing', 22, 8, -2);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
-VALUES ('Adam', 'Sandler', 'Center', 69, 5, 4);
+VALUES ('Adam', 'Sandler', 'Center', 69, 4, 4);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Josh', 'Gift', 'Left Defense',37, 7, -2);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
@@ -44,7 +44,7 @@ VALUES ('Phillip', 'Philips', 'Right Wing', 82, 14, 3);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Sarah', 'Sands', 'Left Wing', 13, 3, 3);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
-VALUES ('Mark', 'Plier', 'Center', 72, 5, -2);
+VALUES ('Mark', 'Plier', 'Center', 72, 5, -7);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Tristan', 'Empires', 'Left Defense', 90, 6, 1);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
@@ -54,7 +54,7 @@ VALUES ('Darth', 'Vader', 'Right Wing', 34, 5, 6);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Luke', 'Walker', 'Left Wing', 17, 6, 2);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
-VALUES ('Jar', 'Binks', 'Center', 86, 3, 5);
+VALUES ('Jar', 'Binks', 'Center', 86, 6, 0);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
 VALUES ('Leo', 'Hardy', 'Left Defense', 55, 0, 2);
 INSERT INTO players (first_name, last_name,position, number, points, plus_minus)
@@ -98,3 +98,35 @@ INSERT INTO lineups (lineup_type, line_num, player_num)
 VALUES ("Custom2", 1, 49);
 INSERT INTO lineups (lineup_type, line_num, player_num)
 VALUES ("Custom2", 1, 10);
+
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Power", 1, 17);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Power", 1, 86);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Power", 1, 55);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Power", 1, 49);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Power", 1, 10);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Defensive", 1, 13);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Defensive", 1, 72);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Defensive", 1, 55);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Defensive", 1, 49);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Defensive", 1, 10);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Balanced", 1, 17);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Balanced", 1, 86);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Balanced", 1, 90);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Balanced", 1, 24);
+INSERT INTO lineups (lineup_type, line_num, player_num)
+VALUES ("Balanced", 1, 10);
+INSERT INTO lineups (lineup_type, line_num, player_num)

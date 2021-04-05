@@ -17,6 +17,8 @@ var leftDefenseName = document.getElementById("leftDefenseName");
 var rightDefenseName = document.getElementById("rightDefenseName");
 
 var names=[leftWingName,rightWingName,centerName,leftDefenseName,rightDefenseName];
+getLines();
+function getLines(){
 fetch("pages/getLines.php", {
     method: 'POST',
 })
@@ -34,7 +36,7 @@ fetch("pages/getLines.php", {
         lines = text;
         displayLine();
     });
-
+}
 function displayLine() {
 
     var newLine = lines.filter(obj => {
@@ -78,4 +80,31 @@ function displayLine() {
         name.children[2].textContent="";
         });
     }
+}
+function generateLines(typeToGen){
+    let frm = new FormData();
+    frm.set('type',typeToGen);
+    fetch("pages/generateLine.php", {
+        method: 'POST',
+        body: frm
+    })
+        .then(function (response) {
+            let text;
+            try {
+                text = response.text();
+            }
+            catch (e) {
+                text = e.message;;
+            }
+            return text;
+        })
+        .then(function (text) {
+            console.log(text);
+            if (parseInt(text)>=1){
+                getLines();
+                type.value=typeToGen;
+                line.value=1;
+                displayLine();
+            }
+        });
 }

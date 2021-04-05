@@ -42,7 +42,7 @@ async function add() {
                     frm.get('position'),
                     frm.get('points'),
                     frm.get('plusMinus'),
-                    "<button onClick='deletePlayer(" + frm.get('number') + ")'>Delete</button><button onClick='editModal(" + frm.get('number') + ")'>Edit</button>"
+                    "<button onClick='deletePlayer(" + frm.get('number') + ")'>Delete</button>   <button onClick='editModal(" + frm.get('number') + ")'   >Edit</button>"
                     ]
                     ).draw();
                 $('#addStatus').text("Updated Successfully");
@@ -76,18 +76,19 @@ async function edit() {
     //TODO FINISH AddPlayer.php
 
     let frm = new FormData();
-    frm.set('firstName',$('#addFirstName').val());
-    frm.set('lastName',$('#addLastName').val());
-    frm.set('position',$('#addPosition').val());
-    frm.set('points',$('#addPoints').val());
-    frm.set('plusMinus',$('#addPlusMinus').val());
-    frm.set('number',$('#addId').val());
+    frm.set('firstName',$('#firstName').val());
+    frm.set('lastName',$('#lastName').val());
+    frm.set('position',$('#position').val());
+    frm.set('points',$('#points').val());
+    frm.set('plusMinus',$('#plusMinus').val());
+    frm.set('number',$('#id').val());
     var same= (    
     frm.get('firstName') === data[0] &&
     frm.get('lastName')===data[1] &&
     frm.get('position')===data[3] &&
     frm.get('points')===data[4] &&
     frm.get('plusMinus')===data[5]);
+    console.log(same);
     if (!same){
         $('#updateBtn').prop('disabled',true);
         $('#players').DataTable().row().remove(tr).draw();
@@ -99,7 +100,7 @@ async function edit() {
         frm.get('position'),
         frm.get('points'),
         frm.get('plusMinus'),
-        "<button onClick='deletePlayer(" + frm.get('number') + ")'>Delete</button><button onClick='editModal(" + frm.get('number') + ")'>Edit</button>"
+        "<button onClick='deletePlayer(" + frm.get('number') + ")'>Delete</button>   <button onClick='editModal(" + frm.get('number') + ")'>Edit</button>"
         ]
         ).draw();
 

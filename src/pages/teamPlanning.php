@@ -13,6 +13,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 </head>
 
 <body>
+    <h2>Select Line</h2>
     <div>
         <select id=lineupType onchange="displayLine()">
             <?php
@@ -87,11 +88,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             </table>
         </div>
         <div class="grid-buttons">
-            <button class="bottomMarginBtn">Update Balanced Line</button>
-            <button class="bottomMarginBtn">Update Defensive Line</button>
+            <button class="bottomMarginBtn" onclick="generateLines('Balanced')">Update Balanced Line</button>
+            <button class="bottomMarginBtn" onclick="generateLines('Defensive')">Update Defensive Line</button>
         </div>
         <div class="grid-buttons">
-            <button class="bottomMarginBtn">Update Power Line</button>
+            <button class="bottomMarginBtn" onclick="generateLines('Power')">Update Power Line</button>
             <button class="bottomMarginBtn">Create Custom Line</button>
         </div>
 
