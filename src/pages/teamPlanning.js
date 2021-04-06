@@ -209,7 +209,7 @@ function updateLine(deleteLine) {
     if (oldName=="New"){
     type.add(new Option(newName, newName));
     }
-
+    if (newName!=="New"){
     let frm = new FormData();
     frm.set('type', oldName);
     frm.set('delete', deleteLine);
@@ -239,6 +239,9 @@ function updateLine(deleteLine) {
                 line.value=editLine.value;
             }
         });
+}else{
+    document.getElementById("status").textContent="Please Change Name";
+}
 }
 // Get the modal
 var modal = document.getElementById("myModal");
