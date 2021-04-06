@@ -18,7 +18,7 @@ $max=0;
     <div>
         <select id=lineupType onchange="displayLine()">
             <?php
-            $sql = "SELECT distinct lineup_type FROM lineups";
+            $sql = "SELECT distinct lineup_type FROM lineups ORDER BY lineup_type";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
