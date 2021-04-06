@@ -44,15 +44,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <span class="close">&times;</span>
             <p id=status>Update Row</p>
             <label>First Name</label>
-            <input id='firstName' type='text'></input>
+            <input id='firstName' style = "margin:0px 0px 5px 0px" type='text'></input><br>
             <label>Last Name</label>
-            <input id='lastName' type='text'></input>
+            <input id='lastName' style = "margin:0px 0px 5px 1px" type='text'></input><br>
             <label>Position</label>
-            <input id='position' type='text'></input>
+            <input id='position' style = "margin:0px 0px 5px 20px" type='text'></input><br>
             <label>Points</label>
-            <input id='points' type='text'></input>
+            <input id='points' style = "margin:0px 0px 5px 33px" type='text'></input><br>
             <label>+ / -</label>
-            <input id='plusMinus' type='text'></input>
+            <input id='plusMinus' style = "margin:0px 0px 5px 46px" type='text'></input><br>
             <input id='row' type='hidden'></input>
             <input id='id' type='hidden'></input>
             <button id=updateBtn onclick="edit()">Update</button>
@@ -62,19 +62,19 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     <div id="myAddModal" class="addModal">
         <div class="addModal-content">
             <span class="close">&times;</span>
-            <p id=addStatus>Update Row</p>
+            <p id=addStatus>Add Row</p>
             <label>First Name</label>
-            <input id='addFirstName' type='text'></input>
+            <input id='addFirstName'  style = "margin:0px 0px 5px 0px" type='text'></input><br>
             <label>Last Name</label>
-            <input id='addLastName' type='text'></input>
+            <input id='addLastName'  style = "margin:0px 0px 5px 2px" type='text'></input><br>
             <label>Number</label>
-            <input id='addId' type='number'></input>
+            <input id='addId'   style = "margin:0px 0px 5px 20px"type='number'></input><br>
             <label>Position</label>
-            <input id='addPosition' type='text'></input>
+            <input id='addPosition' style = "margin:0px 0px 5px 20px"  type='text'></input><br>
             <label>Points</label>
-            <input id='addPoints' type='number'></input>
+            <input id='addPoints' style = "margin:0px 0px 5px 33px" type='number'></input><br>
             <label>+ / -</label>
-            <input id='addPlusMinus' type='number'></input>
+            <input  id='addPlusMinus' style = "margin:0px 0px 5px 46px" type='number'></input><br>
 
             <button id=addBtn onclick="add()">Add</button>
 
