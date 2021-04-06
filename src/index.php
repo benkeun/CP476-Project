@@ -64,7 +64,9 @@ if ($conn->connect_error) {
         const rss = new RSS(
             document.querySelector('#rss-feeds'),
             "https://www.sportsnet.ca/feed?format=xml", {
-                limit: 10
+                limit: 10,
+                entryTemplate:
+                "<li><a href={url} >{title}</a><br>{shortBody}...<br></li>"
             }
         );
         rss.render()
