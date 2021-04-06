@@ -48,7 +48,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <label>Last Name</label>
             <input id='lastName' style = "margin:0px 0px 5px 1px" type='text'></input><br>
             <label>Position</label>
-            <input id='position' style = "margin:0px 0px 5px 20px" type='text'></input><br>
+            <select id='position' style = "margin:0px 0px 5px 20px" type='text'>
+        <option value="Center">Center</option>
+        <option value="Right Wing">Right Wing</option>
+        <option value="Left Wing">Left Wing</option>
+        <option value="Left Defense">Left Defense</option>
+        <option value="Right Defense">Right Defense</option>
+        <option value="Goalie">Goalie</option>
+        </select><br>
             <label>Points</label>
             <input id='points' style = "margin:0px 0px 5px 33px" type='text'></input><br>
             <label>+ / -</label>
@@ -70,7 +77,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
             <label>Number</label>
             <input id='addId'   style = "margin:0px 0px 5px 20px"type='number'></input><br>
             <label>Position</label>
-            <input id='addPosition' style = "margin:0px 0px 5px 20px"  type='text'></input><br>
+            <select id='addPosition' style = "margin:0px 0px 5px 20px" type='text'>
+        <option value="Center">Center</option>
+        <option value="Right Wing">Right Wing</option>
+        <option value="Left Wing">Left Wing</option>
+        <option value="Left Defense">Left Defense</option>
+        <option value="Right Defense">Right Defense</option>
+        <option value="Goalie">Goalie</option>
+        </select><br>
             <label>Points</label>
             <input id='addPoints' style = "margin:0px 0px 5px 33px" type='number'></input><br>
             <label>+ / -</label>
