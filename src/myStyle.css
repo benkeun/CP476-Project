@@ -102,6 +102,8 @@ background-color: aliceblue;
   }
   #mainContainer{
     padding: 10px 10px;
+    width:65%;
+    float:left;
   }
   #addPlayer{
     margin-bottom: 7px;
@@ -196,6 +198,13 @@ background-color: aliceblue;
     grid-template-columns: 290px 180px 180px;
     grid-gap: 10px;
   }
+
+  
+  #rss-feeds{
+    width:30%;
+    float: right;
+    justify-content: right;
+  }
   .grid-buttons{
     text-align: center;
   }
@@ -204,3 +213,28 @@ background-color: aliceblue;
     padding: 5px 5px;
     background-color: white;
   }
+  @media only screen and (max-width: 1650px) {
+    #rss-feeds {
+        width:20%;
+    }
+    #mainContainer{
+      width:75%;
+    }
+}
+@media only screen and (max-width: 1450px) {
+  #rss-feeds {
+      width:15%;
+  }
+  #mainContainer{
+    width:80%;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  #rss-feeds {
+      display:none;
+      width:0%;
+  }
+  #mainContainer{
+    width:100%;
+  }
+}
