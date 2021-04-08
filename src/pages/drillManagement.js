@@ -5,31 +5,31 @@ var canvas = document.getElementById('drillCanvas');
 var ctx = canvas.getContext('2d');
 
 var paint = false;
-var clickX = new Array();
-var clickY = new Array();
-var clickDrag = new Array();
-var mode="lines";
+var prevClickX;
+var prevClickY;
+
+var mode = "line";
 circleMode = "circle";
 crossMode = "cross";
-linesMode = "lines";
+lineMode = "line";
 eraseMode = "erase";
 
-function changeMode(mode){
-    switch(mode){
+function changeMode(mode) {
+    this.mode = mode;
+    switch (this.mode) {
         case "circle":
-            this.mode = mode;
+            ctx.lineWidth = 3;
             break;
         case "cross":
-            this.mode = mode;
+            ctx.lineWidth = 3;
             break;
-        case "lines":
-            this.mode = mode;
+        case "line":
+            ctx.lineWidth = 5;
             break;
         case "erase":
-            this.mode = mode;
+
             break;
         default:
-
     }
 }
 
@@ -39,47 +39,85 @@ function addClick(x, y, dragging) {
     clickDrag.push(dragging);
 }
 function changeBackground(image) {
-        canvas.style.backgroundImage= "url("+image+")";
+    canvas.style.backgroundImage = "url(" + image + ")";
 }
 function redraw() {
     console.log("draw");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
 
-    ctx.strokeStyle = "#df4b26";
-    ctx.lineJoin = "round";
-    ctx.lineWidth = 5;
 
-    for (var i = 0; i < clickX.length; i++) {
-        ctx.beginPath();
-        if (clickDrag[i] && i) {
-            ctx.moveTo(clickX[i - 1], clickY[i - 1]);
-        } else {
-            ctx.moveTo(clickX[i] - 1, clickY[i]);
-        }
-        ctx.lineTo(clickX[i], clickY[i]);
-        ctx.closePath();
-        ctx.stroke();
-    }
 }
 console.log(canvas);
-canvas.onmousedown=function (e) {
-    var mouseX = e.pageX - this.offsetLeft;
-    var mouseY = e.pageY - this.offsetTop;
-    console.log("here")
+canvas.onmousedown = function (e) {
     paint = true;
-    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-    redraw();
-};
-canvas.onmousemove=function (e) {
-    if (paint) {
-        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-        redraw();
+    console.log("here")
+    prevClickX = e.pageX - this.offsetLeft;
+    prevClickY = e.pageY - this.offsetTop;
+    ctx.lineJoin = "round";
+    switch (mode) {
+        case "circle":
+            ctx.strokeStyle = "#0000FF";
+            break;
+        case "cross":
+            ctx.strokeStyle = "#FF0000";
+            break;
+        case "line":
+            ctx.strokeStyle = "#000000";
+            break;
+        case "erase":
+            ctx.globalCompositeOperation = 'destination-out'
+            ctx.arc(prevClickX, prevClickY, 10, 0, Math.PI * 2, true);
+            ctx.fill();
+            break;
+        default:
     }
 };
-canvas.onmouseup=function (e) {
-    paint = false;
-    redraw();
+canvas.onmousemove = function (e) {
+    if (paint) {
+        x = e.pageX - this.offsetLeft;
+        y = e.pageY - this.offsetTop;
+        switch (mode) {
+            case "line":
+                ctx.beginPath();
+                ctx.moveTo(prevClickX, prevClickY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                prevClickX = x;
+                prevClickY = y;
+                break;
+            case "erase":
+                ctx.globalCompositeOperation = 'destination-out'
+                ctx.arc(prevClickX, prevClickY, 10, 0, Math.PI * 2, true);
+                ctx.fill();
+                break;
+            default:
+        }
+    }
 };
-canvas.onmouseleave=function (e) {
+canvas.onmouseup = function (e) {
+    paint = false;
+    x = e.pageX - this.offsetLeft;
+    y = e.pageY - this.offsetTop;
+    switch (mode) {
+        case "circle":
+            ctx.beginPath();
+            ctx.arc(x, y, 15, 0, 2 * Math.PI);
+            ctx.stroke();
+            break;
+        case "cross":
+            ctx.beginPath();
+            ctx.moveTo(x - 15, y - 15);
+            ctx.lineTo(x + 15, y + 15);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(x - 15, y + 15);
+            ctx.lineTo(x + 15, y - 15);
+            ctx.stroke();
+            break;
+        default:
+    }
+};
+canvas.onmouseleave = function (e) {
     paint = false;
 };
