@@ -71,6 +71,7 @@ canvas.onmousedown = function (e) {
             ctx.strokeStyle = "#000000";
             break;
         case "erase":
+            ctx.moveTo(x,y)
             ctx.arc(prevClickX, prevClickY, 10, 0, Math.PI * 2, true);
             ctx.fill();
             break;
@@ -89,8 +90,10 @@ canvas.onmousemove = function (e) {
                 ctx.stroke();
                 prevClickX = x;
                 prevClickY = y;
+                ctx.closePath();
                 break;
             case "erase":
+                ctx.moveTo(x,y)
                 ctx.arc(x, y, 10, 0, Math.PI * 2, true);
                 ctx.fill();
                 break;
@@ -107,17 +110,20 @@ canvas.onmouseup = function (e) {
             ctx.beginPath();
             ctx.arc(x, y, 15, 0, 2 * Math.PI);
             ctx.stroke();
+            ctx.closePath();
             break;
         case "cross":
             ctx.beginPath();
             ctx.moveTo(x - 15, y - 15);
             ctx.lineTo(x + 15, y + 15);
             ctx.stroke();
+            ctx.closePath();
 
             ctx.beginPath();
             ctx.moveTo(x - 15, y + 15);
             ctx.lineTo(x + 15, y - 15);
             ctx.stroke();
+            ctx.closePath();
             break;
         default:
     }
