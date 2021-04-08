@@ -9,6 +9,9 @@ var prevClickX;
 var prevClickY;
 
 var mode = "line";
+ctx.lineWidth = 5;
+ctx.globalCompositeOperation = 'source-over'
+
 circleMode = "circle";
 crossMode = "cross";
 lineMode = "line";
@@ -18,16 +21,19 @@ function changeMode(mode) {
     this.mode = mode;
     switch (this.mode) {
         case "circle":
+            ctx.globalCompositeOperation = 'source-over'
             ctx.lineWidth = 3;
             break;
         case "cross":
+            ctx.globalCompositeOperation = 'source-over'
             ctx.lineWidth = 3;
             break;
         case "line":
+            ctx.globalCompositeOperation = 'source-over'
             ctx.lineWidth = 5;
             break;
         case "erase":
-
+            ctx.globalCompositeOperation = 'destination-out'
             break;
         default:
     }
@@ -65,7 +71,6 @@ canvas.onmousedown = function (e) {
             ctx.strokeStyle = "#000000";
             break;
         case "erase":
-            ctx.globalCompositeOperation = 'destination-out'
             ctx.arc(prevClickX, prevClickY, 10, 0, Math.PI * 2, true);
             ctx.fill();
             break;
@@ -86,8 +91,7 @@ canvas.onmousemove = function (e) {
                 prevClickY = y;
                 break;
             case "erase":
-                ctx.globalCompositeOperation = 'destination-out'
-                ctx.arc(prevClickX, prevClickY, 10, 0, Math.PI * 2, true);
+                ctx.arc(x, y, 10, 0, Math.PI * 2, true);
                 ctx.fill();
                 break;
             default:

@@ -18,7 +18,7 @@
     </div>
     <input type="radio" name="mode" onclick="changeMode(circleMode)">Circle</input>
     <input type="radio" name="mode" onclick="changeMode(crossMode)">Cross</input>
-    <input type="radio" name="mode" onclick="changeMode(linesMode)" checked>Lines</input>
+    <input type="radio" name="mode" onclick="changeMode(lineMode)" checked>Lines</input>
     <input type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</input>
     
     <p>Plan Drills</p>
