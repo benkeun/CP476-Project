@@ -2,6 +2,13 @@ CREATE DATABASE mainDB;
 
 USE mainDB;
 
+CREATE TABLE users (
+    username varchar(32) NOT NULL,
+    password varchar(64) NOT NULL,
+    PRIMARY KEY (`username`)
+);
+INSERT INTO users (username,password) VALUES('admin','d033e22ae348aeb5660fc2140aec35850c4da997');
+
 CREATE TABLE players ( 
 first_name varchar(32) NOT NULL,
 last_name varchar(32) NOT NULL,
@@ -12,11 +19,12 @@ plus_minus int(11) NOT NULL,
 PRIMARY KEY (`number`) );
 
 CREATE TABLE drills ( 
+id int(11) NOT NULL AUTO_INCREMENT,
 name varchar(32) NOT NULL,
 category varchar(32) NOT NULL,
 canvas longtext NOT NULL,
 description longtext NOT NULL,
-PRIMARY KEY (`name`) );
+PRIMARY KEY (`id`) );
 
 CREATE TABLE lineups (
 id int(11) NOT NULL AUTO_INCREMENT,

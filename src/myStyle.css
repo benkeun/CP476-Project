@@ -241,3 +241,12 @@ background-color: aliceblue;
 li{
   margin-top: 15px;
 }
+#logout{
+float:right;
+background-color: #333;
+color: white;
+border:none;
+text-align: center;
+font-size: 17px;
+padding: 8px 16px;
+}

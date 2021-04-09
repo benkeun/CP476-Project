@@ -29,6 +29,10 @@ if ($conn->connect_error) {
     <script src="././dist/rss.global.min.js"></script>
     <script>
         function myLoad(siteName) {
+            var loggedIn = getCookie("username");
+            if (loggedIn === "") {
+                siteName = "login";
+            }
             $('#mainContainer').load("pages/" + siteName + ".php", function(data) {
                 $.getScript("pages/" + siteName + ".js");
             });
@@ -41,7 +45,12 @@ if ($conn->connect_error) {
 <body>
     <script>
         $(document).ready(function() {
-            myLoad('Home');
+            var loggedIn = getCookie("username");
+            if (loggedIn !== "") {
+                myLoad('Home');
+            } else {
+                myLoad("Login");
+            }
             $(".topnav a").click(function(e) {
                 $('.topnav a.active').removeClass('active');
                 $(this).addClass('active');
@@ -54,6 +63,7 @@ if ($conn->connect_error) {
         <a href="#Players" onclick="javascript:myLoad('playerManagement')">Players</a>
         <a href="#Drills" onclick="javascript:myLoad('drillManagement')">Drills</a>
         <a href="#Planning" onclick="javascript:myLoad('teamPlanning')">Plan Team</a>
+        <button id="logout" onclick="setCookie('username','',1); myLoad('Login')">Logout</button>
     </div>
 
     <div id=mainContainer></div>
@@ -63,14 +73,36 @@ if ($conn->connect_error) {
     <script>
         const rss = new RSS(
             document.querySelector('#rss-feeds'),
-            ["https://www.espn.com/espn/rss/news","https://www.sportsnet.ca/feed/","https://www.cbssports.com/rss/headlines/"], {
-                limit: 5,
-                entryTemplate:
-                "<li><a href={url} >{title}</a><br>{shortBody}...<br></li>"
+            ["https://www.espn.com/espn/rss/news", "https://www.sportsnet.ca/feed/", "https://www.cbssports.com/rss/headlines/"], {
+                limit: 4,
+                entryTemplate: "<li><a href={url} >{title}</a><br>{shortBody}...<br></li>"
             }
         );
         rss.render()
             .then(() => console.log('cool'));
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
     </script>
 
 
