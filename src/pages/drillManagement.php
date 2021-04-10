@@ -36,6 +36,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     <input type="radio" name="mode" onclick="changeMode(crossMode)">Cross</input>
     <input type="radio" name="mode" onclick="changeMode(lineMode)" checked>Lines</input>
     <input type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</input>
+    <input hidden=true id="drillId"/>
     <button onclick="resetCanvas()">Reset</button>
     <p>Plan Drills</p>
     <?php
@@ -46,7 +47,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         echo "<table id=drillTable><thead><tr><th>Name</th><th>Category</th></tr></thead><tbody>";
         while ($row = $result->fetch_assoc()) {
 
-            echo "<tr><td><a href='javascript:void(0)' onclick='loadCanvas()'>" . $row['name'] . "</a></td><td>" . $row['category']."</td></tr>";
+            echo "<tr><td><a href='javascript:void(0)' onclick='loadCanvas(".$row['id'].")'>" . $row['name'] . "</a></td><td>" . $row['category']."</td></tr>";
         }
         echo "</tbody></table>";
     } else {

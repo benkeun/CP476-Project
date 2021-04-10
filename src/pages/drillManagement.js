@@ -3,6 +3,7 @@ var backgroundHalf = new Image();
 var drillDiv = document.getElementById('drillDiv');
 var canvas = document.getElementById('drillCanvas');
 var ctx = canvas.getContext('2d');
+var drill;
 
 var paint = false;
 var prevClickX;
@@ -38,7 +39,7 @@ function changeMode(mode) {
         default:
     }
 }
-function resetCanvas(){
+function resetCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 function addClick(x, y, dragging) {
@@ -71,7 +72,7 @@ canvas.onmousedown = function (e) {
             ctx.strokeStyle = "#000000";
             break;
         case "erase":
-            ctx.moveTo(x,y)
+            ctx.moveTo(x, y)
             ctx.arc(prevClickX, prevClickY, 10, 0, Math.PI * 2, true);
             ctx.fill();
             break;
@@ -93,7 +94,7 @@ canvas.onmousemove = function (e) {
                 ctx.closePath();
                 break;
             case "erase":
-                ctx.moveTo(x,y)
+                ctx.moveTo(x, y)
                 ctx.arc(x, y, 10, 0, Math.PI * 2, true);
                 ctx.fill();
                 break;
@@ -134,34 +135,66 @@ canvas.onmouseleave = function (e) {
 
 async function addDrill() {
     let frm = new FormData();
-    frm.set('canvas',canvas.toDataURL());
-    frm.set('drillName',$('#drillName').val());
-    frm.set('description',"No Description");
-    frm.set('drillCategory',$('#drillCategory').val());
-    var empty= (    
+    frm.set('canvas', canvas.toDataURL());
+    frm.set('drillName', $('#drillName').val());
+    frm.set('description', "No Description");
+    frm.set('drillCategory', $('#drillCategory').val());
+    var empty = (
         frm.get('drillName') === "" ||
-        frm.get('drillCategory')===""
-        );
+        frm.get('drillCategory') === ""
+    );
     console.log(empty);
-    if (!empty){
+    if (!empty) {
         await fetch("pages/addDrill.php", {
             method: 'POST',
             body: frm
         })
-        .then(function(response) {
+            .then(function (response) {
+                let text;
+                try {
+                    text = response.text();
+                }
+                catch (e) {
+                    text = e.message;;
+                }
+                return text;
+            })
+            .then(function (text) {
+
+            });
+    } else {
+        $('#addStatus').text("Fill All Blanks");
+    }
+}
+function loadcanvas(id) {
+    let frm = new FormData();
+    frm.set('canvas', canvas.toDataURL());
+    frm.set('drillName', $('#drillName').val());
+    frm.set('description', "No Description");
+    frm.set('drillCategory', $('#drillCategory').val());
+    frm.set('id', id);
+    await fetch("pages/getDrills.php", {
+        method: 'POST',
+        body: frm
+    })
+        .then(function (response) {
             let text;
             try {
-               text= response.text();
+                text = response.text();
             }
-            catch(e){
-               text=e.message;;
+            catch (e) {
+                text = e.message;;
             }
             return text;
         })
-        .then(function(text){
-            
+        .then(function (text) {
+            drill = text[0];
+
+            "use strict";
+            var img = new window.Image();
+            img.addEventListener("load", function () {
+                canvas.getContext("2d").drawImage(img, 0, 0);
+            });
+            img.setAttribute("src", drill['canvas']);
         });
-    } else{
-        $('#addStatus').text("Fill All Blanks");
-    }
 }
