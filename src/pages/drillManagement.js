@@ -134,7 +134,9 @@ canvas.onmouseleave = function (e) {
 
 async function addDrill() {
     let frm = new FormData();
+    frm.set('canvas',canvas.toDataURL());
     frm.set('drillName',$('#drillName').val());
+    frm.set('description',"No Description");
     frm.set('drillCategory',$('#drillCategory').val());
     var empty= (    
         frm.get('drillName') === "" ||
