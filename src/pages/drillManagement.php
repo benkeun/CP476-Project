@@ -18,7 +18,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 </head>
 
 <body>
-    <p>Full Ice Exercises</p>
+    <h2>Exercises</h2>
     <label>Drill Name:</label>
     <input id="drillName" type="text" value="">
     <label>Category:</label>
