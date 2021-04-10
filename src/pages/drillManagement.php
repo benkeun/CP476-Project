@@ -11,8 +11,16 @@
 
 <body>
     <p>Full Ice Exercises</p>
-    <input type="radio" name="background" value="ice" onclick="changeBackground('images/ice.jpg')" checked>Full Ice</input>
-    <input type="radio" name="background" value= "halfIce" onclick="changeBackground('images/halfIce.jpg')">Half Ice</input>
+    <label>Drill Name:</label>
+    <input id = "drillName" type="text" value = "">
+    <label>Category:</label>
+    <select name="drillCategory" id="drillCategory">
+        <option value="skating">Skating</option>
+        <option value="passing">Passing</option>
+        <option value="shooting">Shooting</option>
+    </select>
+    <input type="submit" onclick="addDrill()" value="Submit">
+
     <div id="drillDiv">
         <canvas id="drillCanvas" height="500" width="1165"></canvas>
     </div>
@@ -20,7 +28,7 @@
     <input type="radio" name="mode" onclick="changeMode(crossMode)">Cross</input>
     <input type="radio" name="mode" onclick="changeMode(lineMode)" checked>Lines</input>
     <input type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</input>
-    
+    <button onclick="resetCanvas()">Reset</button>
     <p>Plan Drills</p>
 
 

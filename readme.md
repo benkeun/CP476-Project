@@ -15,8 +15,10 @@ Another fact about this websystem is it can be run entirely in a docker containe
 ## Docker Requirements (Current Machine Setup)
 - Docker
     * Version 20.10.5, build 55c4c88
+    docker -v
 - Docker-Compose
     * Version 1.28.5, build c4eb3a1f
+    docker-compose -v
 
 ## Docker Deployment
 1. Ensure Docker & Docker Compose above match,

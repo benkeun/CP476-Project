@@ -38,7 +38,9 @@ function changeMode(mode) {
         default:
     }
 }
-
+function resetCanvas(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 function addClick(x, y, dragging) {
     clickX.push(x);
     clickY.push(y);
@@ -50,8 +52,6 @@ function changeBackground(image) {
 function redraw() {
     console.log("draw");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
-
-
 }
 console.log(canvas);
 canvas.onmousedown = function (e) {
@@ -131,3 +131,46 @@ canvas.onmouseup = function (e) {
 canvas.onmouseleave = function (e) {
     paint = false;
 };
+
+async function addDrill() {
+    let frm = new FormData();
+    frm.set('drillName',$('#drillName').val());
+    frm.set('drillCategory',$('#drillCategory').val());
+    var empty= (    
+        frm.get('drillName') === "" ||
+        frm.get('drillCategory')===""
+        );
+    console.log(empty);
+    if (!empty){
+        await fetch("pages/addDrill.php", {
+            method: 'POST',
+            body: frm
+        })
+        .then(function(response) {
+            let text;
+            try {
+               text= response.text();
+            }
+            catch(e){
+               text=e.message;;
+            }
+            return text;
+        })
+        .then(function(text){
+            if (text==1){
+                $('#players').DataTable().row.add(
+                    [    
+                    frm.get('drillName'),
+                    frm.get('drillCategory'),
+                    "<button onClick='deleteDrill(" + frm.get('drillNumber') + ")'>Delete</button>   <button onClick='editModal(" + frm.get('drillNumber') + ")'   >Edit</button>"
+                    ]
+                    ).draw();
+                $('#addStatus').text("Updated Successfully");
+            } else {
+                $('#addStatus').text("Player Number Exists");
+            }
+        });
+    } else{
+        $('#addStatus').text("Fill All Blanks");
+    }
+}
