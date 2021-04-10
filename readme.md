@@ -31,6 +31,8 @@ Another fact about this websystem is it can be run entirely in a docker containe
 
 4. In your web browser go to:
     * http://localhost/BarDown/
+        * Username: admin
+        * Password:  admin
 
 5. If docker containers are stopped at anypoint they can be restarted with:
     
@@ -47,8 +49,6 @@ Another fact about this websystem is it can be run entirely in a docker containe
    * Version 2.4.46
 - PHP
     * Version 8.0.0
-- NodeJs
-    * Version 12.18.3
 - MySql
     * Version 10.4.17-MariaDB
 ## Alternative Deployment
