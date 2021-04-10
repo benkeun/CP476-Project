@@ -43,10 +43,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT * FROM drills    ";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        echo "<table id=drills><thead><tr><th>Name</th><th>Category</th></tr></thead><tbody>";
+        echo "<table id=drillTable><thead><tr><th>Name</th><th>Category</th></tr></thead><tbody>";
         while ($row = $result->fetch_assoc()) {
 
-            echo "<tr><td><a onclick='loadCanvas()'>" . $row['name'] . "</a></td><td>" . $row['category']."</td></tr>";
+            echo "<tr><td><a href='javascript:void(0)' onclick='loadCanvas()'>" . $row['name'] . "</a></td><td>" . $row['category']."</td></tr>";
         }
         echo "</tbody></table>";
     } else {
