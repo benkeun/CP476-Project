@@ -6,7 +6,7 @@ $password = env("password");
 $dbname = env("dbname");
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql="INSERT INTO drills (name, category,canvas, description) VALUES ('".$_POST['name']."', '".$_POST['category']."', '".$_POST['canvas']."', '".$_POST['description']."');";
+$sql="INSERT INTO drills (name, category,canvas, description) VALUES ('".$_POST['drillName']."', '".$_POST['drillCategory']."', '".$_POST['canvas']."', '".$_POST['description']."');";
 $result=$conn->query($sql);
 echo $result;
 
