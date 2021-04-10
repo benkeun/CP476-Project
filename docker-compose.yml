@@ -9,20 +9,18 @@ services:
           - .:/application
         restart: always
         environment:
-          - MYSQL_ROOT_PASSWORD=.sweetpwd.
-          - MYSQL_DATABASE=my_db
-          - MYSQL_USER=db_user
-          - MYSQL_PASSWORD=.mypwd
+          - MYSQL_ROOT_PASSWORD=pass
+          - MYSQL_DATABASE=DB
+          - MYSQL_USER=admin
+          - MYSQL_PASSWORD=pass
         ports:
           - "8082:3306"
   website:
-    container_name: php72
+    container_name: BarDownSite
     build:
       context: ./
-    volumes:
-      - ./src/ :/var/www/html
     ports:
       - 80:80
     depends_on:
       - mysql
-    hostname: CP476
+    hostname: BarDown

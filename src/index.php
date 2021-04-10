@@ -47,9 +47,9 @@ if ($conn->connect_error) {
         $(document).ready(function() {
             var loggedIn = getCookie("username");
             if (loggedIn !== "") {
-                myLoad('Home');
+                myLoad('home');
             } else {
-                myLoad("Login");
+                myLoad("login");
             }
             $(".topnav a").click(function(e) {
                 $('.topnav a.active').removeClass('active');
@@ -59,11 +59,11 @@ if ($conn->connect_error) {
         });
     </script>
     <div class="topnav">
-        <a class="active" href="#home" onclick="javascript:myLoad('Home')">Home</a>
+        <a class="active" href="#home" onclick="javascript:myLoad('home')">Home</a>
         <a href="#Players" onclick="javascript:myLoad('playerManagement')">Players</a>
         <a href="#Drills" onclick="javascript:myLoad('drillManagement')">Drills</a>
         <a href="#Planning" onclick="javascript:myLoad('teamPlanning')">Plan Team</a>
-        <button id="logout" onclick="setCookie('username','',1); myLoad('Login')">Logout</button>
+        <button id="logout" onclick="setCookie('username','',1); myLoad('login')">Logout</button>
     </div>
 
     <div id=mainContainer></div>

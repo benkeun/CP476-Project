@@ -1,8 +1,8 @@
 <?php
-  $variables = [
-      'servername' => 'localhost',
+   $variables = [
+      'servername' => 'mysql',
       'username' => 'root',
-      'password' => '',
+      'password' => 'pass',
       'dbname' => 'mainDB',
       'DB_PORT' => '3306',
   ];

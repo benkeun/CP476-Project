@@ -33,7 +33,7 @@ line_num int(11) NOT NULL,
 player_num int(3) NOT NULL,
 description longtext,
 PRIMARY KEY (`id`) ,
-FOREIGN KEY (`player_num`) REFERENCES players(`number`)
+FOREIGN KEY (`player_num`) REFERENCES players(`number`) ON DELETE CASCADE
 );
 
 

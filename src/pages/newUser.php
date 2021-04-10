@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-
-<head>
-    <title>Add User</title>
-</head>
-
-<body>
-    <?php
+<?php
     include '../autoload.php';
     $name = $_POST['username'];
     $userpassword = sha1($_POST['password']);
@@ -36,7 +29,3 @@
     $conn->close();
 
     ?>
-
-</body>
-
-</html>

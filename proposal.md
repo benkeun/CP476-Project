@@ -1,7 +1,7 @@
 ---
 title:  'CP476 Project: Bar Down Coaching'
 author: Ben Keunen, Matthew Wong
-date: 2021-03-22
+date: 2021-04-10
 ---
 
 ## Introduction
@@ -12,13 +12,13 @@ We are creating a sports / team management system that is used to keep track of 
 
 1. Will allow the coach / manager to store and edit exercises they created including any whiteboard (Javascript Canvas) drawings they may have created to go with the exercises. This will require a database that can store the exercises along with the images and keywords so they can sort through and find the exercises for the skills they are trying to work on.
 2. Additionally through the player management system they must be able to load individual player information as well as see who has been most productive to the team with different criteria.
-3. The coach finally will be given a team planning form that will allow him to specify the current needs, whether it be they are down in the game and need to know who to put on the field to ensure they score the needed goal, or if they are currently in the lead and need to maintain that by making sure they have a well balanced team out in the playing area. (Ie going for a quick boost of strength or going for long term success) This will be calculated algorithmically on the server and have the ideal group for the situation displayed to the coach.
+3. The coach finally will be given a team planning page that will allow him to specify the current needs, whether it be they are down in the game and need to know who to put on the field to ensure they score the needed goal, or if they are currently in the lead and need to maintain that by making sure they have a well balanced team out in the playing area. (Ie going for a quick boost of strength or going for long term success) This will be calculated on the serverside and have the ideal group for the situation displayed to the coach.
 
 ## System Design
 
 **1. System:** It will be a multi tier web application using multiple tools, as listed in part 2, which allow for quick access to a database where the server retrieves player and drill info and returns it in a readable format to the user in the web browser. The team planning will involve loading player information and user input parameters into a php file which calculates the lineup of players that best meet the requirements and returns it in a readable table to the user. The website will be deployed in docker to ensure the server has all libraries available and compatible with the site requirements.
 
-**2. Tools:** Xampp, Apache, mySQL, JQuery, AJAX, Doctrine for PHP, Composer, and Docker.
+**2. Tools:** Xampp, Apache, mySQL, JQuery, AJAX, JavaScript, PHP, Composer, and Docker.
 
 **3. Views:**
 
@@ -50,8 +50,7 @@ List of tasks/milestones/check points of your project with time schedule. For gr
 
 ## References
 
-1. [Doctrine](https://www.doctrine-project.org/)
-2. [Composer](https://getcomposer.org/)
-3. [Docker](https://www.docker.com/)
-4. [Top Ten Sports Canada](https://sportytell.com/sports/top-10-most-popular-sports-in-canada/)
-5. [Importance of Hockey Drill Planning](https://www.hockeyshare.com/blog/comments-thoughts/hockey-rink-diagrams-practice-plan-templates/)
+1. [Composer](https://getcomposer.org/)
+2. [Docker](https://www.docker.com/)
+3. [Top Ten Sports Canada](https://sportytell.com/sports/top-10-most-popular-sports-in-canada/)
+4. [Importance of Hockey Drill Planning](https://www.hockeyshare.com/blog/comments-thoughts/hockey-rink-diagrams-practice-plan-templates/)

@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-
-<head>
-  <title>Login</title>
-</head>
-
-<body>
 <?php
 include '../autoload.php';
 $name = $_POST['name'];
@@ -46,6 +39,3 @@ setcookie($cookie_pass, $cookie_pass_value, time() + (600), "/"); // 86400 = 1 d
 $conn->close();
 
 ?>
-
-</body>
-</html>
