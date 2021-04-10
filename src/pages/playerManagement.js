@@ -88,7 +88,7 @@ async function edit() {
     frm.get('position')===data[3] &&
     frm.get('points')===data[4] &&
     frm.get('plusMinus')===data[5]);
-    console.log(same);
+
     if (!same){
         $('#updateBtn').prop('disabled',true);
         $('#players').DataTable().row().remove(tr).draw();

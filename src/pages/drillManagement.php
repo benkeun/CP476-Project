@@ -28,14 +28,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         <option value="shooting">Shooting</option>
     </select>
     <input type="submit" onclick="addDrill()" value="Submit">
+    <input style="margin-left:20px" type="submit" onclick="deleteDrill()" value="Delete">
 
     <div id="drillDiv">
         <canvas id="drillCanvas" height="500" width="1165"></canvas>
     </div>
-    <input type="radio" name="mode" onclick="changeMode(circleMode)">Circle</input>
-    <input type="radio" name="mode" onclick="changeMode(crossMode)">Cross</input>
-    <input type="radio" name="mode" onclick="changeMode(lineMode)" checked>Lines</input>
-    <input type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</input>
+    <input id=circleButton type="radio" name="mode" onclick="changeMode(circleMode)">Circle</input>
+    <input id=crossButton type="radio" name="mode" onclick="changeMode(crossMode)">Cross</input>
+    <input id=lineButton type="radio" name="mode" onclick="changeMode(lineMode)" checked>Lines</input>
+    <input id=eraseButton type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</input>
     <input hidden=true id="drillId"/>
     <button onclick="resetCanvas()">Reset</button>
     <p>Plan Drills</p>
@@ -51,7 +52,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
         }
         echo "</tbody></table>";
     } else {
-        echo "\nError: " . $conn->error;
+        echo "<table id=drillTable><thead><tr><th>Name</th><th>Category</th></tr></thead></table>";
     }
     ?>
 

@@ -51,13 +51,10 @@ function changeBackground(image) {
     canvas.style.backgroundImage = "url(" + image + ")";
 }
 function redraw() {
-    console.log("draw");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
 }
-console.log(canvas);
 canvas.onmousedown = function (e) {
     paint = true;
-    console.log("here")
     prevClickX = e.pageX - this.offsetLeft;
     prevClickY = e.pageY - this.offsetTop;
     ctx.lineJoin = "round";
@@ -70,6 +67,10 @@ canvas.onmousedown = function (e) {
             break;
         case "line":
             ctx.strokeStyle = "#000000";
+            ctx.beginPath();
+            ctx.arc(prevClickX, prevClickY, 2, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.closePath();
             break;
         case "erase":
             ctx.moveTo(x, y)
@@ -135,7 +136,8 @@ canvas.onmouseleave = function (e) {
 
 async function addDrill() {
     let frm = new FormData();
-    frm.set('canvas', canvas.toDataURL());
+    let updated = document.getElementById("drillCanvas");
+    frm.set('canvas', updated.toDataURL());
     frm.set('drillName', $('#drillName').val());
     frm.set('description', "No Description");
     frm.set('drillCategory', $('#drillCategory').val());
@@ -143,7 +145,6 @@ async function addDrill() {
         frm.get('drillName') === "" ||
         frm.get('drillCategory') === ""
     );
-    console.log(empty);
     if (!empty) {
         await fetch("pages/addDrill.php", {
             method: 'POST',
@@ -160,20 +161,23 @@ async function addDrill() {
                 return text;
             })
             .then(function (text) {
-
+                $('#drillTable').DataTable().row.add(
+                    [
+                        "<a href='javascript:void(0)' onclick=loadCanvas(" + text + ")> " + frm.get('drillName') + "</a>",
+                        frm.get('drillCategory'),
+                    ]
+                ).draw();
             });
     } else {
         $('#addStatus').text("Fill All Blanks");
     }
 }
-function loadcanvas(id) {
+async function deleteDrill() {
     let frm = new FormData();
-    frm.set('canvas', canvas.toDataURL());
-    frm.set('drillName', $('#drillName').val());
-    frm.set('description', "No Description");
-    frm.set('drillCategory', $('#drillCategory').val());
-    frm.set('id', id);
-    await fetch("pages/getDrills.php", {
+    frm.set('id', document.getElementById("drillId").value);
+    frm.set('drillName',document.getElementById("drillName").value)
+
+    await fetch("pages/deleteDrill.php", {
         method: 'POST',
         body: frm
     })
@@ -188,13 +192,64 @@ function loadcanvas(id) {
             return text;
         })
         .then(function (text) {
-            drill = text[0];
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            document.getElementById("drillName").value="";
+            $('#drillTable').DataTable()
+    .rows( function ( idx, data, node ) {
 
+        var that= data[0].includes(frm.get('id'));
+        return that;
+    } )
+    .remove()
+    .draw();
+        });
+}
+
+async function loadCanvas(id) {
+    let frm = new FormData();
+    document.getElementById("drillId").value=id;
+    frm.set('id', id);
+    await fetch("pages/getDrills.php", {
+        method: 'POST',
+        body: frm
+    })
+        .then(function (response) {
+            let text;
+            try {
+                text = response.json();
+            }
+            catch (e) {
+                text = e.message;;
+            }
+            return text;
+        })
+        .then(function (text) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            drill = text[0];
+            document.getElementById("drillName").value=drill['name'];
             "use strict";
-            var img = new window.Image();
+            var img = new Image();
             img.addEventListener("load", function () {
-                canvas.getContext("2d").drawImage(img, 0, 0);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             });
             img.setAttribute("src", drill['canvas']);
         });
+}
+document.onkeypress = function(e){
+    if (e.key=="c"){
+        document.getElementById("circleButton").checked=true;
+        changeMode("circle");
+    } else if  (e.key=="x"){
+        document.getElementById("crossButton").checked=true;
+        changeMode("cross");
+    }
+    else if  (e.key=="e"){
+        document.getElementById("eraseButton").checked=true;
+        changeMode("erase");
+    }else if  (e.key=="l"){
+        document.getElementById("lineButton").checked=true;
+        changeMode("line");
+    }
+    
+
 }

@@ -5,7 +5,7 @@ $username = env("username");
 $password = env("password");
 $dbname = env("dbname");
 $conn = new mysqli($servername, $username, $password, $dbname);
-$sql = "SELECT * FROM drills";
+$sql = "SELECT * FROM drills WHERE id=  ".$_POST['id'];
 $result=$conn->query($sql);
 if ($result->num_rows > 0) {
     $rows= array();

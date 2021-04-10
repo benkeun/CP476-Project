@@ -79,7 +79,7 @@ if ($conn->connect_error) {
             }
         );
         rss.render()
-            .then(() => console.log('cool'));
+            .then(() =>  that="this");
 
         function getCookie(cname) {
             var name = cname + "=";
