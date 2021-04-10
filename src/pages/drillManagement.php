@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+<?php
+include '../autoload.php';
+$servername = env('servername');
+$username = env("username");
+$password = env("password");
+$dbname = env("dbname");
+$conn = new mysqli($servername, $username, $password, $dbname);
+?>
 
 <head>
     <title>Drill Management</title>
@@ -12,7 +20,7 @@
 <body>
     <p>Full Ice Exercises</p>
     <label>Drill Name:</label>
-    <input id = "drillName" type="text" value = "">
+    <input id="drillName" type="text" value="">
     <label>Category:</label>
     <select name="drillCategory" id="drillCategory">
         <option value="skating">Skating</option>
@@ -30,7 +38,28 @@
     <input type="radio" name="mode" onclick="changeMode(eraseMode)">Erase</input>
     <button onclick="resetCanvas()">Reset</button>
     <p>Plan Drills</p>
+    <?php
 
+    $sql = "SELECT * FROM drills    ";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        echo "<table id=drills><thead><tr><th>Name</th><th>Category</th>";
+        while ($row = $result->fetch_assoc()) {
+
+            echo "<tr><td>" . $row['name'] . "</td><td>" . $row['category'];
+        }
+        echo "</tbody></table>";
+    } else {
+        echo "\nError: " . $conn->error;
+    }
+    ?>
+
+
+    <script>
+        var myTable = $('#drillTable').DataTable({
+            paging: true
+        });
+    </script>
 
 </body>
 

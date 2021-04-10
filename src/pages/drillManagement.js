@@ -157,18 +157,7 @@ async function addDrill() {
             return text;
         })
         .then(function(text){
-            if (text==1){
-                $('#players').DataTable().row.add(
-                    [    
-                    frm.get('drillName'),
-                    frm.get('drillCategory'),
-                    "<button onClick='deleteDrill(" + frm.get('drillNumber') + ")'>Delete</button>   <button onClick='editModal(" + frm.get('drillNumber') + ")'   >Edit</button>"
-                    ]
-                    ).draw();
-                $('#addStatus').text("Updated Successfully");
-            } else {
-                $('#addStatus').text("Player Number Exists");
-            }
+            
         });
     } else{
         $('#addStatus').text("Fill All Blanks");
