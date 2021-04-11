@@ -1,0 +1,79 @@
+<h1 id="cp476-project">CP476 Project</h1>
+<p>Author: Ben Keunen</p>
+<p>Date: March 24th</p>
+<h1 id="bar-down-coaching">Bar Down Coaching</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Sports are a large part of Canadian and American culture, 60% of kids between the age of 3 and 17 participate in an organized sport. Every organized sport is different, but they all have a few things in common. They have players/participants, and they have coaches. For this app this is exactly what we are focusing on. We are developing this web system as a coaching toolbox app allowing for team management; storing players and their statistics; exercises and descriptions along with a visual example drawn on a whiteboard; and the lineups of the team itself. For the purpose of proving the concept and keeping things simple we focused entirely on the sport hockey which has a very well organized setup and player statistics scheme.</p>
+<p>Another fact about this websystem is it can be run entirely in a docker container no matter what the system architecture as long as you have access to docker and docker-compose. This containerization makes it simple to transfer the app from one computer to another.</p>
+<h2 id="docker-requirements-current-machine-setup">Docker Requirements (Current Machine Setup)</h2>
+<ul class="incremental">
+<li>Docker
+<ul class="incremental">
+<li>Version 20.10.5, build 55c4c88 docker -v</li>
+</ul></li>
+<li>Docker-Compose
+<ul class="incremental">
+<li>Version 1.28.5, build c4eb3a1f docker-compose -v</li>
+</ul></li>
+</ul>
+<h2 id="docker-deployment">Docker Deployment</h2>
+<ol class="incremental" type="1">
+<li><p>Ensure Docker &amp; Docker Compose above match,</p></li>
+<li><p>Use CLI and go to project folder</p></li>
+<li><p>Use Command:</p>
+<ul class="incremental">
+<li><code>docker-compose up --build -d</code> <br></li>
+<br>
+</ul></li>
+<li>In your web browser go to:
+<ul class="incremental">
+<li>http://localhost/BarDown/
+<ul class="incremental">
+<li>Username: admin</li>
+<li>Password: admin</li>
+</ul></li>
+</ul></li>
+<li><p>If docker containers are stopped at anypoint they can be restarted with:</p>
+<ul class="incremental">
+<li><code>docker-compose up -d</code> <br></li>
+<br>
+</ul></li>
+<li><p>When finished with site use following command to clear all data related to it. Permanently Deletes All Data.</p>
+<ul class="incremental">
+<li><code>docker-compose down -v</code> </li>
+<br>
+</ul></li>
+</ol>
+<h2 id="alternative-requirements">Alternative Requirements</h2>
+<ul class="incremental">
+<li>XAMPP
+<ul class="incremental">
+<li>Version 3.2.4</li>
+</ul></li>
+<li>Apache
+<ul class="incremental">
+<li>Version 2.4.46</li>
+</ul></li>
+<li>PHP
+<ul class="incremental">
+<li>Version 8.0.0</li>
+</ul></li>
+<li>MySql
+<ul class="incremental">
+<li>Version 10.4.17-MariaDB</li>
+</ul></li>
+</ul>
+<h2 id="alternative-deployment">Alternative Deployment</h2>
+<ol class="incremental" type="1">
+<li><p>Install Versions as above.</p></li>
+<li><p>Copy project files to your root folder that xampp uses, ie cp476</p></li>
+<li><p>Start XAMPP</p>
+<ol class="incremental" type="1">
+<li><p>Start Apache</p></li>
+<li><p>Start Mysql</p></li>
+</ol></li>
+<li>In your web browser go to:
+<ul class="incremental">
+<li>http://localhost/cp476/project/src</li>
+</ul></li>
+</ol>

@@ -42,7 +42,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     <p>Plan Drills</p>
     <?php
 
-    $sql = "SELECT * FROM drills    ";
+    $sql = "SELECT name, category, id FROM drills    ";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo "<table id=drillTable><thead><tr><th>Name</th><th>Category</th></tr></thead><tbody>";

@@ -42,11 +42,7 @@ function changeMode(mode) {
 function resetCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
-function addClick(x, y, dragging) {
-    clickX.push(x);
-    clickY.push(y);
-    clickDrag.push(dragging);
-}
+
 function changeBackground(image) {
     canvas.style.backgroundImage = "url(" + image + ")";
 }
@@ -73,7 +69,7 @@ canvas.onmousedown = function (e) {
             ctx.closePath();
             break;
         case "erase":
-            ctx.moveTo(x, y)
+            ctx.moveTo(prevClickX, prevClickY)
             ctx.arc(prevClickX, prevClickY, 10, 0, Math.PI * 2, true);
             ctx.fill();
             break;

@@ -47,6 +47,7 @@ function getPlayers() {
         })
         .then(function (text) {
             players = text;
+            console.log("Players Stored in browser are: "+JSON.stringify(players));
         });
 }
 

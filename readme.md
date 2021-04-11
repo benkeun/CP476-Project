@@ -28,6 +28,7 @@ Another fact about this websystem is it can be run entirely in a docker containe
 3. Use Command:
 
     * ```docker-compose up --build -d```
+<br>
 
 4. In your web browser go to:
     * http://localhost/BarDown/
@@ -37,10 +38,13 @@ Another fact about this websystem is it can be run entirely in a docker containe
 5. If docker containers are stopped at anypoint they can be restarted with:
     
     * ```docker-compose up -d```
+<br>
 
 6. When finished with site use following command to clear all data related to it. Permanently Deletes All Data.
 
     * ```docker-compose down -v```
+<br>
+
 
 ## Alternative Requirements
 - XAMPP 
@@ -51,6 +55,7 @@ Another fact about this websystem is it can be run entirely in a docker containe
     * Version 8.0.0
 - MySql
     * Version 10.4.17-MariaDB
+
 ## Alternative Deployment
 
 1. Install Versions as above.

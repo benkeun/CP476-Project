@@ -1,0 +1,84 @@
+<h2 id="introduction">Introduction</h2>
+<p>We are creating a sports / team management system that is used to keep track of roster, points, optimal team setups (lines), practice drills and other information related to running a team. It will allow a coach to create and store exercises along with player specific information to ensure the team can be run efficiently and improve itself. To begin it will focus solely on Hockey which is the most popular sport in Canada and fifth most popular in the United States.</p>
+<h2 id="problem-solving-and-algorithms">Problem solving and algorithms</h2>
+<ol class="incremental" type="1">
+<li>Will allow the coach / manager to store and edit exercises they created including any whiteboard (Javascript Canvas) drawings they may have created to go with the exercises. This will require a database that can store the exercises along with the images and keywords so they can sort through and find the exercises for the skills they are trying to work on.</li>
+<li>Additionally through the player management system they must be able to load individual player information as well as see who has been most productive to the team with different criteria.</li>
+<li>The coach finally will be given a team planning page that will allow him to specify the current needs, whether it be they are down in the game and need to know who to put on the field to ensure they score the needed goal, or if they are currently in the lead and need to maintain that by making sure they have a well balanced team out in the playing area. (Ie going for a quick boost of strength or going for long term success) This will be calculated on the serverside and have the ideal group for the situation displayed to the coach.</li>
+</ol>
+<h2 id="system-design">System Design</h2>
+<p><strong>1. System:</strong> It will be a multi tier web application using multiple tools, as listed in part 2, which allow for quick access to a database where the server retrieves player and drill info and returns it in a readable format to the user in the web browser. The team planning will involve loading player information and user input parameters into a php file which calculates the lineup of players that best meet the requirements and returns it in a readable table to the user. The website will be deployed in docker to ensure the server has all libraries available and compatible with the site requirements.</p>
+<p><strong>2. Tools:</strong> Xampp, Apache, mySQL, JQuery, AJAX, JavaScript, PHP, Composer, and Docker.</p>
+<p><strong>3. Views:</strong></p>
+<p><img src="documentationImages/views.png" /></p>
+<p><strong>4. Architecture:</strong></p>
+<p><img src="documentationImages/Architectures.png" /></p>
+<h2 id="milestones-schedule">Milestones &amp; schedule</h2>
+<p>List of tasks/milestones/check points of your project with time schedule. For group project, it needs to provide the roles and tasks of each member.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Task ID</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: center;">Due date</th>
+<th style="text-align: center;">Lead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Project Research &amp; Team up</td>
+<td style="text-align: center;">Day 5 of week 9</td>
+<td style="text-align: center;">Ben</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Project Proposal</td>
+<td style="text-align: center;">Day 1 of week 10</td>
+<td style="text-align: center;">Ben</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">UI &amp; Database Design Completed</td>
+<td style="text-align: center;">Day 5 of week 10</td>
+<td style="text-align: center;">Ben</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">UI &amp; Database Connections Completed</td>
+<td style="text-align: center;">Day 5 of week 11</td>
+<td style="text-align: center;">Ben</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Algorithms &amp; Testing Completed</td>
+<td style="text-align: center;">Day 4 of week 12</td>
+<td style="text-align: center;">Matt</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">Project Demonstration</td>
+<td style="text-align: center;">Day 5 of week 12</td>
+<td style="text-align: center;">Matt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: left;">Docker Containerization Complete</td>
+<td style="text-align: center;">Day 4 of week 13</td>
+<td style="text-align: center;">Matt</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: left;">Project Submission</td>
+<td style="text-align: center;">Day 5 of week 13</td>
+<td style="text-align: center;">Matt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ol class="incremental" type="1">
+<li><a href="https://getcomposer.org/">Composer</a></li>
+<li><a href="https://www.docker.com/">Docker</a></li>
+<li><a href="https://sportytell.com/sports/top-10-most-popular-sports-in-canada/">Top Ten Sports Canada</a></li>
+<li><a href="https://www.hockeyshare.com/blog/comments-thoughts/hockey-rink-diagrams-practice-plan-templates/">Importance of Hockey Drill Planning</a></li>
+</ol>
